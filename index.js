@@ -28,9 +28,15 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ *    Counter1 puts the count variable inside the function, and later defines counter1 as the same as counterMaker function, but outside of the counterMaker function.  Counter2 defines the count variable on the global scope outside of the counter2 function, and doesn't define counter2 later outside the function.
+ * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
+ *    Counter1 uses a closure, because outside of the function counterMaker, the variable counter1 uses closure to access the counterMaker function.
+ * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ * 
+ *    Counter1 would be better if you just want to use the count variable for this function, and counter2 would be better if you want to use count variable for other parts of your code as well.
  *
 */
 
@@ -56,11 +62,12 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
+function inning() {
 
-    /*Code Here*/
+    return Math.floor(Math.random() * 3)
+    }
 
-}
+console.log(inning());
 
 /* Task 3: finalScore()
 
@@ -76,11 +83,23 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
+function finalScore(inning, numberOfInnings){
 
-  /*Code Here*/
+    let homeScore = 0;
+    let awayScore = 0;
 
+  for (i = 0; i < numberOfInnings; i++) {
+     homeScore += inning();
+     awayScore += inning();
+  }
+
+  return {
+    Home: homeScore,
+    Away: awayScore,
+  }
 }
+
+console.log(finalScore(inning, 5));
 
 /* Task 4: 
 
@@ -89,7 +108,7 @@ Create a function called `scoreboard` that accepts the following parameters:
 (1) Callback function `inning` that you wrote above
 (2) A number of innings
 
-and returns the score at each pont in the game, like so:
+and returns the score at each point in the game, like so:
 
 1st inning: 0 - 2
 2nd inning: 1 - 3
@@ -103,8 +122,41 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+
+function ordinalNumber(cardinal) {
+
+    const lastDigit = cardinal % 10;
+    const tens = cardinal % 100;
+
+    if (tens >= 10 && tens <= 19) {
+      return cardinal + 'th';
+    } else if (lastDigit === 1) {
+      return cardinal + 'st';
+    } else if (lastDigit === 2) {
+      return cardinal + 'nd';
+    } else if (lastDigit === 3) {
+      return cardinal + 'rd';
+    } else {
+      return cardinal + 'th';
+    }
+
 }
+
+function scoreboard(inning, numberOfInnings) {
+
+  let homeScore = 0;
+  let awayScore = 0;
+
+  for (i = 0; i < numberOfInnings; i++) {
+     homeScore += inning();
+     awayScore += inning();
+
+     console.log(`${ordinalNumber(i + 1)} inning: ${homeScore} - ${awayScore}`)
+  } 
+
+  console.log(`Final Score: ${homeScore} - ${awayScore}`)
+}
+
+scoreboard(inning, 9)
 
 
