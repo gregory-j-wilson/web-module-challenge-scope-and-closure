@@ -42,6 +42,9 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+
+    Closure is when you are within the local scope - inside a function or curly braces, and it has to reach outside the local scope to access a variable or function that is needed inside the local scope.
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,8 +66,16 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+
+    The const functions dansRoll and zoesRoll use closure to reach out and use and execute the instructions inside the personalDice function.  I can tell because dansRoll and zoesRoll use the personalDice function, and put in the parameter of the name.  And the function personalDice is guarded in curly braces, but is being accessed by dansRoll and zoesRoll.
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+    What is the same is that it will run the personalDice function both times.  What is different is that it will generate a different number for newRoll and thus display that Dan rolled a different number.  
+
 c. What is the lexical scope of `newRoll`? 
+
+    It extends beyond the personalDice function, because it can be accessed via invoking personalDice with an argument.
 
 ### Task 2c - Exit Ticket
 
@@ -96,7 +107,28 @@ addSix(10); // returns 16
 addSix(21); // returns 27
 ```
 
+Did it.  See stretch.js
+
+
+
 3. Research the differences between functional programming and object oriented programming. Then, describe the pros and cons of functional programming vs object-oriented programming. This is a common interview question and great practice!
+
+    For functional programming, the code is made up mostly of variables and functions - driven by functions, whereas in
+    object oriented programming, objects and methods make up the bulk.  Functional programming uses unchangeable data, and object oriented uses changeable data.  Functional follows declarative programming model, Object oriented follows imperative programming model.  Functional programming is used only when there are a few things with a greater number of operations.  Whereas object oriented has many things or objects with fewer operations.
+
+
+    Pros of functional programming include that it can works well in an INTERACTIVE environment.  It is also efficient, can have nested functions, and less bugs.  Also, statements can be executed in any order.  It works well when complexity is present.  It works well in front end because it's less object oriented, and back end usually gives a lot of objects for the front end.
+
+    Cons of functional programming is that it can have too many dependency statements thus creating "spaghetti code" - chaos... It can be harder to debug too. 
+
+    Pros of Object Oriented Programming are that it gets useful data to the user, methods, functions, properties can be inherited, and it hids irrelevant data from users and prevents unauthorized access.  It can store data from outsiders securely.  Works good in back end, because it packages things nicely.
+
+    Cons of Object Oriented Programming could include that statements have to be executed in particular order.  And there can be too many layers, causing difficulty.
+
+    If you want to focus more on the function part - the action that happens, functional programming is better.  If you first want to emphasize the object that's going to do something, object oriented might suit you better.
+  
+
+
 
 ## Resources
 
